@@ -1,6 +1,7 @@
 # Stock market perdiction models based on Market Sentiment using python
 """
 Objective: Stock market perdiction models based on Market Sentiment using python.
+
 Description:
 1. Data Collection:
     Gather historical stock price data for top 100 stocks.
