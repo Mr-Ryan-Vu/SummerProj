@@ -1,8 +1,6 @@
-# Stock market perdiction models base don Market Sentiment using python
-
-# Objective: Stock market perdiction models based on Market Sentiment using python.
-
+# Stock market perdiction models based on Market Sentiment using python
 """
+Objective: Stock market perdiction models based on Market Sentiment using python.
 Description:
 1. Data Collection:
     Gather historical stock price data for top 100 stocks.
@@ -25,5 +23,4 @@ Description:
 
 Disclaimer:
  stock prices are highly influenced by many other factors. while Sentiment analysis can provide insights it cant be a sole or 100% accurate perdictor of stock price perdiction. 
-
 """
