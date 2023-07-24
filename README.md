@@ -1,5 +1,5 @@
 # Stock market perdiction models based on Market Sentiment using python
-"""
+
 Objective: Stock market perdiction models based on Market Sentiment using python.
 
 Description:
@@ -23,5 +23,5 @@ Description:
     Depoy model to make real time predictions or use it to forcast future stock prices based on sentiment. 
 
 Disclaimer:
- stock prices are highly influenced by many other factors. while Sentiment analysis can provide insights it cant be a sole or 100% accurate perdictor of stock price perdiction. 
-"""
+    stock prices are highly influenced by many other factors. while Sentiment analysis can provide insights it cant be a sole or 100% accurate perdictor of stock price perdiction. 
+
