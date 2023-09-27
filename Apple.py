@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 #import libraries 
 import sys
 import matplotlib.pyplot as plt # plotting
@@ -19,20 +16,10 @@ nltk.download('vader_lexicon')
 import warnings
 warnings. filterwarnings("ignore")
 
-
-# In[2]:
-
-
 df1 = pd.read_csv('AppleFinalData.csv')
 
 
-# In[3]:
-
-
 df2 = pd.read_csv('AppleNewsStock.csv')
-
-
-# In[ ]:
 
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -60,17 +47,11 @@ def sentiment(df):
     adds these scores as new columns to the DataFrame."""
 
 
-# In[ ]:
-
-
 def if_news(column):
     if column ==0:
         return 0
     else:
         return 1
-
-
-# In[ ]:
 
 
 df1['if_news'] = df1['compound'].apply(if_news)
@@ -81,16 +62,8 @@ df_weekly.set_index('Date',inplace=True)
 #creates a new column in df1 called 'if_news'it uses apply to apply if_news into each compound 
 #column and they can be put into binary values where 0 indicates
 
-
-# In[ ]:
-
-
 def take_last(array_like):
     return array_like[-1]
-
-
-# In[ ]:
-
 
 output = df_weekly.resample('W', loffset=pd.Timedelta(days=-6)).agg({
     'Close': 'last',
@@ -103,14 +76,7 @@ output = df_weekly.resample('W', loffset=pd.Timedelta(days=-6)).agg({
 #then close means where the value 
 # of the stock closed. 
 
-
-# In[ ]:
-
-
 output.head(10)
-
-
-# In[ ]:
 
 
 """
@@ -132,9 +98,6 @@ Returns
 -------
 List of tuples: Each tuple contains (X_train, X_test, y_train, y_test) for one fold
 """
-
-
-# In[ ]:
 
 
 def k_fold_split(df, X, y, k=5, seed=42):
@@ -159,9 +122,6 @@ def k_fold_split(df, X, y, k=5, seed=42):
     return splits
 
 
-# In[ ]:
-
-
 def pd2ndarray( dfList ):
     """
     For each DataFrame in the list dfList, prepare the ndarray needed by the sklearn model
@@ -182,4 +142,6 @@ def pd2ndarray( dfList ):
     
     # Change the return statement as appropriate
     return ndList
+
+
 
