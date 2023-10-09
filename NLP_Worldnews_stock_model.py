@@ -26,5 +26,6 @@ import gensim
 from gensim.models import Word2Vec
 
 
-df_train= pd.read_csv('../input/nlp-getting-started/train.csv')
-df_test=pd.read_csv('../input/nlp-getting-started/test.csv')
+df_train= pd.read_csv('../Input/Combined_News_DJIA.csv', header=0, usecols=[0,1])
+df_test = pd.read_csv('../Input/Combined_News_DJIA.csv', header=0, usecols=[2:27])
+
