@@ -25,7 +25,18 @@ from sklearn.feature_extraction.text import CountVectorizer
 import gensim
 from gensim.models import Word2Vec
 
+whole_dataset = pd.read_csv('Input/Combined_News_DJIA.csv', header=0)
+index = whole_dataset.loc[whole_dataset['Date'] == '2015-01-02'].index
+num_of_rows = len(whole_dataset)
+#print("HELLOHELLO", index[0])
 
-df_train= pd.read_csv('../Input/Combined_News_DJIA.csv', header=0, usecols=[0,1])
-df_test = pd.read_csv('../Input/Combined_News_DJIA.csv', header=0, usecols=[2:27])
+#We add +1 to correct the zero-indexing
+rows_to_keep = [*range(0, index[0]+1, 1)]
+
+#rows_to_keep = [whole_dataset[0:index[0]]]
+df_train= pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x not in rows_to_keep)
+print("TRAINTRAINTRAINTRAIN:", df_train)
+df_test = pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x in rows_to_keep)
+print("TESTTESTTEST:", df_test)
+
 
