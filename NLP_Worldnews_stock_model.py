@@ -24,3 +24,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 #for word embedding
 import gensim
 from gensim.models import Word2Vec
+
+
+df_train= pd.read_csv('../input/nlp-getting-started/train.csv')
+df_test=pd.read_csv('../input/nlp-getting-started/test.csv')
