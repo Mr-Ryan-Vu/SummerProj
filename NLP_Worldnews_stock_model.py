@@ -26,20 +26,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 import gensim
 from gensim.models import Word2Vec
 
-whole_dataset = pd.read_csv('Input/Combined_News_DJIA.csv', header=0)
-index = whole_dataset.loc[whole_dataset['Date'] == '2015-01-02'].index
-num_of_rows = len(whole_dataset)
-#print("HELLOHELLO", index[0])
-
-#We add +1 to correct the zero-indexing
-rows_to_keep = [*range(0, index[0]+1, 1)]
-
-#rows_to_keep = [whole_dataset[0:index[0]]]
-df_train= pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x not in rows_to_keep)
-print( df_train)
-df_test = pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x in rows_to_keep)
-print ( df_test)
-
 
 #convert to lowercase, strip and remove punctuations
 def preprocess(text):
@@ -80,3 +66,24 @@ def lemmatizer(string):
     word_pos_tags = nltk.pos_tag(word_tokenize(string)) # Get position tags
     a=[wl.lemmatize(tag[0], get_wordnet_pos(tag[1])) for idx, tag in enumerate(word_pos_tags)] # Map the position tag and lemmatize the word/token
     return " ".join(a)
+
+def finalpreprocess(string):
+    return lemmatizer(stopword(preprocess(string)))
+
+
+if __name__ == "__main__":#main function
+   
+    whole_dataset = pd.read_csv('Input/Combined_News_DJIA.csv', header=0)
+    index = whole_dataset.loc[whole_dataset['Date'] == '2015-01-02'].index
+    num_of_rows = len(whole_dataset)
+
+    #We add +1 to correct the zero-indexing
+    rows_to_keep = [*range(0, index[0]+1, 1)]
+
+    #rows_to_keep = [whole_dataset[0:index[0]]]
+    df_train= pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x not in rows_to_keep)
+    print( df_train)
+    df_test = pd.read_csv('Input/Combined_News_DJIA.csv', header=0, skiprows = lambda x: x in rows_to_keep)
+    print ( df_test)
+
+    
